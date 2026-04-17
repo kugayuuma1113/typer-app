@@ -12,6 +12,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest  # 新品のUbuntu VMを使う
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       # ① リポジトリのコードをVMに持ってくる（ほぼ必須の定型文）
