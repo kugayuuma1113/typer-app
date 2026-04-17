@@ -1,6 +1,6 @@
 # .github/workflows/ci.yml
 
-name: CI  # GitHub上でのワークフロー表示名
+name: CI  # GitHub上でのワークフロー名
 
 # トリガー: mainへのpush と、mainへのPR作成・更新時に実行
 on:
