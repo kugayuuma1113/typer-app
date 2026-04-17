@@ -5,9 +5,9 @@ name: CI  # GitHub上でのワークフロー名
 # トリガー: mainへのpush と、mainへのPR作成・更新時に実行
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   test:
