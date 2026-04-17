@@ -1,0 +1,29 @@
+# .github/workflows/ci.yml
+
+name: CI  # GitHub上でのワークフロー表示名
+
+# トリガー: mainへのpush と、mainへのPR作成・更新時に実行
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # 新品のUbuntu VMを使う
+
+    steps:
+      # ① リポジトリのコードをVMに持ってくる（ほぼ必須の定型文）
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+
+      # ② uvをセットアップする（コミュニティ製の公式アクション）
+      - name: uvをセットアップ
+        uses: astral-sh/setup-uv@v6
+
+      # ③ 依存関係をインストールしてpytestを実行する
+      - name: テストを実行
+        run: |
+          uv sync --all-groups   # dev依存（pytest）も含めてインストール
+          uv run pytest -v       # -v で各テストケース名を表示
